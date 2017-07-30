@@ -1,1 +1,1 @@
-Somthing like kanban board
+Something like kanban board
