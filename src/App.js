@@ -59,6 +59,7 @@ const teamMembers = [
 const BoardTitleContainer = styled.div`
    padding: 2rem;
    background-color: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(204, 204, 204);
 `;
 
 const BoardTitle = styled.h1`
