@@ -1,11 +1,18 @@
-import React from 'react'
-import Item from './item'
+import React from 'react';
+import Item from './item';
+import styled from 'styled-components';
 
-const Column = ({items, label}) => (
-    <div>
-        <h2>{label}</h2>
-        {items.map(({id}, key) => <Item key={key} id={id} title="Title" />)}
-    </div>
-)
+const ColumnContainer = styled.div`
+    flex-basis: 100%;
+    flex-shrink: 1;
+    margin: 0 0.5rem;
+    background-color: rgb(245,245,245);
+`;
 
-export default Column
+const Column = ({items = []}) => (
+    <ColumnContainer>
+        {items.map(({params}, key) => <Item key={key} params={params} />)}
+    </ColumnContainer>
+);
+
+export default Column;

@@ -1,18 +1,36 @@
-import React from 'react'
-import Column from './column'
-import styled from 'styled-components'
+import React from 'react';
+import Column from './column';
+import styled from 'styled-components';
 
-const boardContainer = styled.div`
+const MemberIssuesContainer = styled.div`
+`;
+
+const ColumnsContainer = styled.div`
     display: flex;
-    padding: 10px;
-`
+    align-content: stretch;
+`;
 
-const BoardGrid = ({columns}) => {
-    return (
-        <boardContainer> 
-            {columns.map(({items, label}, key) => <Column key={key} items={items} label={label} />)}
-        </boardContainer>
-    )
-}
+const MemberInitials = styled.h3`
+    padding: 1rem;
+    font-size: 1.4rem;
+`;
 
-export default BoardGrid
+const CountOfIssues = styled.span`
+    color: rgb(112, 112, 112);
+    font-size: 1.2rem;
+`;
+
+const BoardGrid = ({columns, initials}) => (
+    <MemberIssuesContainer>
+        <MemberInitials>
+            {initials + ' '}
+            <CountOfIssues>{columns.length} issues</CountOfIssues>
+        </MemberInitials>
+
+        <ColumnsContainer>
+            {columns.map((items, key) => <Column key={key} items={items} />)}
+        </ColumnsContainer>
+    </MemberIssuesContainer>
+);
+
+export default BoardGrid;
