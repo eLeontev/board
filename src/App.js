@@ -2,59 +2,11 @@ import React, {Component} from 'react';
 import BoardGrid from './board-grid/board-grid';
 import BoardGridHeader from './board-grid/boar-grid-header';
 
+import {columns, teamMembers, items} from './initialData';
+
 import styled from 'styled-components';
 
-const boardTitle = 'Board';
-
-const columns = [
-    {
-        label: 'assigned',
-        items: [
-            {
-                id: 1,
-                userId: 1,
-                params: {
-                    title: 'Issue 1',
-                },
-            },
-        ],
-    },
-    {
-        label: 'in progress',
-        items: [
-            {
-                id: 2,
-                userId: 1,
-                params: {
-                    title: 'Issue 2',
-                },
-            },
-        ],
-    },
-    {
-        label: 'done',
-        items: [
-            {
-                id: 3,
-                userId: 2,
-                params: {
-                    title: 'Issue 3',
-                },
-            },
-        ],
-    },
-];
-
-const teamMembers = [
-    {
-        initials: 'Employee 1',
-        id: 1,
-    },
-    {
-        initials: 'Employee 2',
-        id: 2,
-    },
-];
+const BOARD_TITLE = 'Board';
 
 const BoardTitleContainer = styled.div`
    padding: 2rem;
@@ -69,24 +21,31 @@ const BoardTitle = styled.h1`
 
 class Board extends Component {
     render() {
+        const getIssuesAccordingTheStatus = (columns, items) => columns.map(({id, label}) => ({
+            id,
+            label,
+            items: items.filter(({statusId}) => statusId === id),
+        }));
+
+        const extendedColumns = getIssuesAccordingTheStatus(columns, items);
         const issuesPerMember = teamMembers.map(({id, initials}) => ({
                 initials,
-                issues: columns.map(({label, items}) => items
+                items: extendedColumns.map(({label, items}) => items
                     .filter(({userId}) => userId === id)
                     .map(({id, params}) => ({params, id})))
             }
         ));
-
+        
         return (
             <div className="wrapper">
                 <BoardTitleContainer>
-                    <BoardTitle>{boardTitle}</BoardTitle>
+                    <BoardTitle>{BOARD_TITLE}</BoardTitle>
                 </BoardTitleContainer>
 
-                <BoardGridHeader columns={columns} />
+                <BoardGridHeader columns={extendedColumns} />
 
                 <div>
-                    {issuesPerMember.map(({initials, issues}, key) => <BoardGrid key={key} columns={issues} initials={initials} />)}
+                    {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} />)}
                 </div>
             </div>
         );

@@ -13,7 +13,7 @@ const ColumnHeader = styled.h2`
     padding-left: 1rem;
 `;
 
-const BoardGridHeader = ({columns}) => (
+const BoardGridHeader = ({columns, countOfItems}) => (
     <ColumnHeaderContainer>
         {columns.map(({label, items}, key) => <ColumnHeader key={key}><b>{items.length}</b> {label}</ColumnHeader>)}
     </ColumnHeaderContainer>

@@ -18,19 +18,26 @@ const MemberInitials = styled.h3`
 const CountOfIssues = styled.span`
     color: rgb(112, 112, 112);
     font-size: 1.2rem;
+    &:before {
+        content: ' ';
+    }
 `;
 
-const BoardGrid = ({columns, initials}) => (
-    <MemberIssuesContainer>
-        <MemberInitials>
-            {initials + ' '}
-            <CountOfIssues>{columns.length} issues</CountOfIssues>
-        </MemberInitials>
+const BoardGrid = ({columns, initials}) => {
+    const getCountOfIssues = (columns) => columns.reduce((count, items) => count + items.length, 0);
 
-        <ColumnsContainer>
-            {columns.map((items, key) => <Column key={key} items={items} />)}
-        </ColumnsContainer>
-    </MemberIssuesContainer>
-);
+    return (
+        <MemberIssuesContainer>
+            <MemberInitials>
+                {initials}
+                <CountOfIssues>{getCountOfIssues(columns)} issues</CountOfIssues>
+            </MemberInitials>
+
+            <ColumnsContainer>
+                {columns.map((items, key) => <Column key={key} items={items} />)}
+            </ColumnsContainer>
+        </MemberIssuesContainer>
+    )
+};
 
 export default BoardGrid;
