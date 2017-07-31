@@ -1,4 +1,3 @@
-
 export const teamMembers = [
     {
         initials: 'Employee 1',
