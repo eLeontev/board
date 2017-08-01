@@ -7,7 +7,21 @@ import TaskIcon from '../svg-icons/task-icon';
 const ItemContainer = styled.div`
     background-color: #fff;
     border: 1px solid rgb(204, 204, 204);
-    padding: 1rem;
+    border-left: none;
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: .5rem;
+        bottom: 0;
+        background-color: red;
+    }
+`;
+
+const ItemWrapper = styled.div`
+    margin: 1rem;
     display: flex;
 `;
 
@@ -16,6 +30,7 @@ const FlexChild = styled.div``;
 const IconsContainer = styled(FlexChild)`
     width: 16px;
     margin-right: 1rem;
+    margin-left: .5rem;
 `;
 
 const AvatarContainer = styled(FlexChild)`
@@ -28,6 +43,14 @@ const NoAvatarContainer = styled.div`
     width: 32px;
     height: 32px;
     border-radius: .3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:before {
+        content: '+';
+        color: #fff;
+        font-size: 2.4rem;
+    }
 `;
 
 const CommonContainer = styled.p`
@@ -59,20 +82,22 @@ const Item = ({params, statusId}) => {
 
     return (
         <ItemContainer>
-            <IconsContainer>
-                {getIconOfTypeOfItem(typesOfIcons, params.type)}
-            </IconsContainer>
+            <ItemWrapper>
+                <IconsContainer>
+                    {getIconOfTypeOfItem(typesOfIcons, params.type)}
+                </IconsContainer>
 
-            <FlexChild>
-                <h3><LinkToIssue href="#" statusId={statusId}>{params.title}</LinkToIssue></h3>
-                <CommonContainer>{params.description}</CommonContainer>
-                {params.label ? <LabelContainer backgroundColor={params.label.color}>{params.label.title}</LabelContainer> : ''}
-                <CommonContainer>{params.status}</CommonContainer>
-            </FlexChild>
+                <FlexChild>
+                    <h3><LinkToIssue href="#" statusId={statusId}>{params.title}</LinkToIssue></h3>
+                    <CommonContainer>{params.description}</CommonContainer>
+                    {params.label ? <LabelContainer backgroundColor={params.label.color}>{params.label.title}</LabelContainer> : ''}
+                    <CommonContainer>{params.status}</CommonContainer>
+                </FlexChild>
 
-            <AvatarContainer>
-                <NoAvatarContainer color="red" />
-            </AvatarContainer>
+                <AvatarContainer>
+                    <NoAvatarContainer color="rgb(172, 112, 122)" />
+                </AvatarContainer>
+            </ItemWrapper>
         </ItemContainer>
     );
 };
