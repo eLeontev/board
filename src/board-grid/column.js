@@ -11,7 +11,7 @@ const ColumnContainer = styled.div`
 
 const Column = ({items = []}) => (
     <ColumnContainer>
-        {items.map(({params}, key) => <Item key={key} params={params} />)}
+        {items.map(({params, statusId}, key) => <Item key={key} params={params} statusId={statusId} />)}
     </ColumnContainer>
 );
 

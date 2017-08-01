@@ -32,10 +32,10 @@ class Board extends Component {
                 initials,
                 items: extendedColumns.map(({label, items}) => items
                     .filter(({userId}) => userId === id)
-                    .map(({id, params}) => ({params, id})))
+                    .map(({id, params, statusId}) => ({id, params, statusId})))
             }
         ));
-        
+
         return (
             <div className="wrapper">
                 <BoardTitleContainer>
