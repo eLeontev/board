@@ -31,8 +31,8 @@ const ItemWrapper = styled.div`
 const colors = ['rgb(204, 0, 0)', 'rgb(217, 170, 52)', 'rgb(24, 173, 24)', 'rgb(245,245,245)'];
 const getColorOfPriority = (colors, priority) => colors[priority.slice(-1)] || colors[colors.length - 1];
 
-const Item = ({params, statusId, assignee}) => {
-    const {priority, type, label, title, description, status} = params;    
+const Item = ({params, statusId}) => {
+    const {priority, type, label, title, description, status, assignee} = params;    
     return (
         <ItemContainer color={getColorOfPriority(colors, priority)}>
             <ItemWrapper>
