@@ -7,6 +7,7 @@ import IconsContainer from './item-icon';
 import styled from 'styled-components';
 
 const ItemContainer = styled.div`
+    cursor: move;
     position: relative;
     background-color: #fff;
 
