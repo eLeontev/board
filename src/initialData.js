@@ -1,3 +1,5 @@
+const avatarUrl = require('./img/useravatar.png');
+
 export const teamMembers = [
     {
         initials: 'Employee 1',
@@ -24,7 +26,7 @@ export const items = [
                 title: 'Backend',
                 color: 'rgb(211, 156, 63)',
             },
-            assignee: {
+            tooltip: {
                 assignee: 'User 1',
                 avatarUrl: '',
             },
@@ -44,7 +46,7 @@ export const items = [
                 title: 'Backend',
                 color: 'rgb(59, 127, 196)',
             },
-            assignee: {
+            tooltip: {
                 assignee: 'Development Team',
                 avatarUrl: '',
             },
@@ -60,10 +62,10 @@ export const items = [
             status: 'Resolved',
             priority: 'p2',
             type: 'task',
-        },
-        assignee: {
-            assignee: 'QA Team',
-            avatarUrl: '',
+            tooltip: {
+                assignee: 'QA Team',
+                avatarUrl: avatarUrl,
+            },
         },
     },
 ];

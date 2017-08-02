@@ -6,7 +6,7 @@ import {columns, teamMembers, items} from './initialData';
 
 import styled from 'styled-components';
 
-const BOARD_TITLE = 'Board';
+const BOARD_TITLE = 'Kanban Board';
 
 const BoardTitleContainer = styled.div`
    padding: 2rem;
