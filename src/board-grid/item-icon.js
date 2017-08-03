@@ -7,6 +7,7 @@ import SubTaskIcon from '../svg-icons/subTask-icon';
 import MajorIcon from '../svg-icons/major-icon';
 import MinorIcon from '../svg-icons/minor-icon';
 import TrivialIcon from '../svg-icons/trivial-icon';
+import NoPriorityIcon from '../svg-icons/noPriority-icon';
 
 import styled from 'styled-components';
 
@@ -34,7 +35,7 @@ const IconContainer = ({type, priority}) => (
     <Container>
         {getIconOfTypeOfItem(typesOfIcons, type)}
         <ArrowContainer>
-            {priorityIcons[priority.slice(-1)]}
+            {priority ? priorityIcons[priority.slice(-1)] : <NoPriorityIcon />}
         </ArrowContainer>
     </Container> 
 );

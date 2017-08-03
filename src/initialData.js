@@ -68,6 +68,21 @@ export const items = [
             },
         },
     },
+    {
+        id: 4,
+        userId: 1,
+        statusId: 2,
+        params: {
+            title: 'Issue 3',
+            description: 'Accusantium ducimus impedit laudantium magnam pariatur provident quia quis tempora ullam vel.',
+            status: 'Resolved',
+            type: 'task',
+            tooltip: {
+                assignee: 'QA Team',
+                avatarUrl: avatarUrl,
+            },
+        },
+    },
 ];
 
 export const columns = [

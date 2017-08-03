@@ -1,0 +1,11 @@
+import React from 'react';
+
+const NoPriorityIcon = () => (
+    <svg width="16" height="16" viewBox="0 0 16 16">
+        <image id="Layer_0" data-name="Layer 0" x="1" y="1" width="14" height="14" xlinkHref="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOBAMAAADtZjDiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAMFBMVEX////QRDfQRDfQRDfQRDfQRDfQRDfQRDfQRDfQRDfQRDfQRDfQRDfQRDfQRDcAAADufXXTAAAADnRSTlMAIojd7sx3EVVEmTNmu7Nv2ikAAAABYktHRA8YugDZAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH4QgDChgQoTKLQwAAAHZJREFUCNdjYGBUdgkrYGBgaH737p0nAwPHu4UMYk8mMIi8s2Rg2GfIoLf4yQYGtmcMdpJ+ngyMTxneMWx5vIHhMZDmtHsNpOMEGPY93viUQS+BgdvO6w1DyWsGhi3vzBk4/RIZpN5tYGCYDDTXGmg+Y64x0B4AYHEmqWN+ubkAAAAASUVORK5CYII="/>
+    </svg>
+
+
+);
+
+export default NoPriorityIcon;
