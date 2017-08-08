@@ -22,6 +22,14 @@ const ItemContainer = styled.div`
         position: absolute;
         background-color: ${({color}) => color};
     }
+    
+    &:hover {
+        background: rgb(233, 233, 233);
+    }
+    
+    &:hover:before {
+        background: ${({color}) => color === '#fff'? 'rgb(233, 233, 233)': color};
+    }
 `;
 
 const ItemWrapper = styled.div`
