@@ -22,16 +22,27 @@ const Label = styled(Paragraph)`
     background-color: ${({backgroundColor}) => backgroundColor}
 `;
 
-const ItemContent = ({title, statusId, description, label, status}) => (
-    <Container>
-        <HeadOfItem>
-            <LinkToItem href="#" statusId={statusId}>{title}</LinkToItem>
-        </HeadOfItem>
+const ItemContent = ({title, statusId, description, label, status}) => {
+    const clickHandler = (e) => {
+        e.preventDefault();
+        console.log(title);
+    };
 
-        <Paragraph>{description}</Paragraph>
-        {label && <Label backgroundColor={label.color}>{label.title}</Label>}
-        <Paragraph>{status}</Paragraph>
-    </Container>
-);
+    return (
+        <Container>
+            <HeadOfItem>
+                <LinkToItem href={title}
+                            statusId={statusId}
+                            onClick={clickHandler}>
+                    {title}
+                </LinkToItem>
+            </HeadOfItem>
+
+            <Paragraph>{description}</Paragraph>
+            {label && <Label backgroundColor={label.color}>{label.title}</Label>}
+            <Paragraph>{status}</Paragraph>
+        </Container>
+    );
+};
 
 export default ItemContent;

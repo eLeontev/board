@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ColumnHeaderContainer = styled.div`
     display: flex;
-    padding: 1rem;
+    padding: 1.5rem 0 1rem;
 `;
 
 const ColumnHeader = styled.h2`

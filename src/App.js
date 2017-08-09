@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ItemInfo from './item-info/item-info';
 import BoardGrid from './board-grid/board-grid';
 import BoardGridHeader from './board-grid/boar-grid-header';
 
@@ -18,6 +19,13 @@ const BoardTitle = styled.h1`
      font-size: 2.4rem;
 `;
 
+const GridBody = styled.div`
+    padding-right: 1rem;
+`;
+
+const BoardContent = styled.div`
+    display: flex;
+`;
 
 class Board extends Component {
     render() {
@@ -35,6 +43,7 @@ class Board extends Component {
                     .map(({id, params, statusId}) => ({id, params, statusId})))
             }
         ));
+        debugger;
 
         return (
             <div className="wrapper">
@@ -42,11 +51,19 @@ class Board extends Component {
                     <BoardTitle>{BOARD_TITLE}</BoardTitle>
                 </BoardTitleContainer>
 
-                <BoardGridHeader columns={extendedColumns} />
+                <BoardContent>
+                    <GridBody>
+                        <BoardGridHeader columns={extendedColumns} />
 
-                <div>
-                    {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} />)}
-                </div>
+                        <div>
+                            {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} />)}
+                        </div>
+                    </GridBody>
+                    <ItemInfo item={issuesPerMember[0].items[0][0]} />
+                </BoardContent>
+
+
+
             </div>
         );
     }
