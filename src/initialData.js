@@ -42,8 +42,8 @@ export const items = [
                 avatarUrl: '',
             },
             dates: {
-                startDate: new Date(),
-                endDate: new Date(),
+                created: new Date(),
+                updated: new Date(),
             },
         },
     },
@@ -67,8 +67,8 @@ export const items = [
                 avatarUrl: '',
             },
             dates: {
-                startDate: new Date(),
-                endDate: new Date(),
+                created: new Date(),
+                updated: new Date(),
             },
         },
     },
@@ -88,8 +88,8 @@ export const items = [
                 avatarUrl: avatarUrl,
             },
             dates: {
-                startDate: new Date(),
-                endDate: new Date(),
+                created: new Date(),
+                updated: new Date(),
             },
         },
     },
@@ -108,8 +108,8 @@ export const items = [
                 avatarUrl: avatarUrl,
             },
             dates: {
-                startDate: new Date(),
-                endDate: new Date(),
+                created: new Date(),
+                updated: new Date(),
             },
         },
     },

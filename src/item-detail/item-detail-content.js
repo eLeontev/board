@@ -51,7 +51,7 @@ const ItemDetailContent = ({data}) => (
     <DataContainer>
         {data.map(({label, value}, key) => (
             <DataPairContainer key={key}>
-                <DataLabel>{label}</DataLabel>
+                <DataLabel>{label}:</DataLabel>
                 {value
                     ? label === 'labels'
                         ? renderLabels(value)

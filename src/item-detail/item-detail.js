@@ -19,13 +19,13 @@ const ContentContainer = styled.div`
     padding: 1.5rem 1rem 1rem;
 `;
 
-const transformDatesToString = ({startDate, endDate}) => {
+const transformDatesToString = ({created, updated}) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const transformDate = (date) => `${date.getDate()}/${months[date.getMonth()]}/${date.getFullYear()}`;
 
     return {
-        startDate: transformDate(startDate),
-        endDate: transformDate(endDate),
+        created: transformDate(created),
+        updated: transformDate(updated),
     };
 };
 
