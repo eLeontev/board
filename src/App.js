@@ -21,6 +21,7 @@ const BoardTitle = styled.h1`
 `;
 
 const GridBody = styled.div`
+    flex-grow: 1;
     padding-right: 1rem;
 `;
 
