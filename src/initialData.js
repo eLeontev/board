@@ -58,7 +58,7 @@ export const items = [
             priority: 's1',
             type: 'bug',
             labels: [{
-                title: 'Frontend',
+                title: 'Need More Information',
                 color: 'rgb(59, 127, 196)',
             }],
             tooltip: {
