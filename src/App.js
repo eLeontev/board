@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ItemInfo from './item-info/item-info';
+import ItemInfo from './item-detail/item-detail';
 import BoardGrid from './board-grid/board-grid';
 import BoardGridHeader from './board-grid/boar-grid-header';
 

@@ -2,6 +2,7 @@ import React from 'react';
 
 import ItemHeader from './item-header';
 import ItemLeftPanel from './item-left-panel';
+import ItemDescription from './item-description';
 
 import styled from 'styled-components';
 
@@ -22,6 +23,7 @@ const ItemInfo = ({item}) => (
         <ItemLeftPanel/>
         <ContentContainer>
             <ItemHeader title={item.params.title} type={item.params.type} />
+            <ItemDescription description={item.params.description} />
         </ContentContainer>
     </ItemContainer>
 );

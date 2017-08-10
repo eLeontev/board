@@ -12,7 +12,7 @@ import NoPriorityIcon from '../svg-icons/noPriority-icon';
 import styled from 'styled-components';
 
 const typesOfIcons = {
-    bug: <BugIcon />,    
+    bug: <BugIcon />,
     task: <TaskIcon />,
     subTask: <SubTaskIcon />,
 };
@@ -34,7 +34,7 @@ const ArrowContainer = styled.div`
 const IconContainer = ({type, priority}) => (
     <Container>
         {getIconOfTypeOfItem(typesOfIcons, type)}
-        <ArrowContainer>
+        <ArrowContainer title={priority || 'PLease Chose The Priority'}>
             {priority ? priorityIcons[priority.slice(-1)] : <NoPriorityIcon />}
         </ArrowContainer>
     </Container> 
