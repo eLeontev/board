@@ -7,6 +7,8 @@ import styled from 'styled-components';
 const Container = styled.div`
     display: flex;
     cursor: pointer;
+    margin-left: -5px;
+    margin-bottom: 2rem;
     border: 1px solid #fff;
 
     &:hover {

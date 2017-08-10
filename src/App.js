@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import ItemInfo from './item-detail/item-detail';
+
 import BoardGrid from './board-grid/board-grid';
+import ItemDetail from './item-detail/item-detail';
 import BoardGridHeader from './board-grid/boar-grid-header';
 
 import {columns, teamMembers, items} from './initialData';
@@ -38,12 +39,11 @@ class Board extends Component {
         const extendedColumns = getIssuesAccordingTheStatus(columns, items);
         const issuesPerMember = teamMembers.map(({id, initials}) => ({
                 initials,
-                items: extendedColumns.map(({label, items}) => items
+                items: extendedColumns.map(({labels, items}) => items
                     .filter(({userId}) => userId === id)
                     .map(({id, params, statusId}) => ({id, params, statusId})))
             }
         ));
-        debugger;
 
         return (
             <div className="wrapper">
@@ -59,11 +59,8 @@ class Board extends Component {
                             {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} />)}
                         </div>
                     </GridBody>
-                    <ItemInfo item={issuesPerMember[0].items[0][0]} />
+                    <ItemDetail item={issuesPerMember[0].items[0][0]} />
                 </BoardContent>
-
-
-
             </div>
         );
     }

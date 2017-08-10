@@ -41,14 +41,14 @@ const colors = ['rgb(204, 0, 0)', 'rgb(217, 170, 52)', 'rgb(24, 173, 24)', '#fff
 const getColorOfPriority = (colors, priority) => priority ? colors[priority.slice(-1)]: colors[colors.length - 1];
 
 const Item = ({params, statusId, isFirstItem}) => {
-    const {priority, type, label, title, description, status, tooltip} = params;
+    const {priority, type, labels, title, description, status, tooltip} = params;
     return (
         <ItemContainer color={getColorOfPriority(colors, priority)} isFirstItem={isFirstItem}>
             <ItemWrapper>
                 <IconsContainer type={type} priority={priority} />
 
                 <ItemContent 
-                    label={label}
+                    label={labels ? labels[0] : ''}
                     title={title}
                     status={status}    
                     statusId={statusId}

@@ -22,13 +22,28 @@ export const items = [
             status: 'Open',
             priority: 's0',
             type: 'subTask',
-            label: {
-                title: 'Backend',
-                color: 'rgb(211, 156, 63)',
-            },
+            labels: [
+                {
+                    title: 'Backend',
+                    color: 'rgb(211, 156, 63)',
+                },
+                {
+                    title: 'Team A',
+                    color: 'rgb(59, 127, 196)',
+                },
+                {
+                    title: 'Need More Information',
+                    color: 'rgb(59, 127, 196)',
+                }
+            ],
             tooltip: {
+                reporter: '',
                 assignee: 'User 1',
                 avatarUrl: '',
+            },
+            dates: {
+                startDate: new Date(),
+                endDate: new Date(),
             },
         },
     },
@@ -42,13 +57,18 @@ export const items = [
             status: 'In Progress',
             priority: 's1',
             type: 'bug',
-            label: {
-                title: 'Backend',
+            labels: [{
+                title: 'Frontend',
                 color: 'rgb(59, 127, 196)',
-            },
+            }],
             tooltip: {
+                reporter: 'Jean F',
                 assignee: 'Development Team',
                 avatarUrl: '',
+            },
+            dates: {
+                startDate: new Date(),
+                endDate: new Date(),
             },
         },
     },
@@ -63,8 +83,13 @@ export const items = [
             priority: 'p2',
             type: 'task',
             tooltip: {
+                reporter: 'Andrea S',
                 assignee: 'QA Team',
                 avatarUrl: avatarUrl,
+            },
+            dates: {
+                startDate: new Date(),
+                endDate: new Date(),
             },
         },
     },
@@ -78,8 +103,13 @@ export const items = [
             status: 'Resolved',
             type: 'task',
             tooltip: {
+                reporter: 'Timothy A',
                 assignee: 'QA Team',
                 avatarUrl: avatarUrl,
+            },
+            dates: {
+                startDate: new Date(),
+                endDate: new Date(),
             },
         },
     },
