@@ -9,9 +9,9 @@ const ColumnContainer = styled.div`
     background-color: rgb(245,245,245);
 `;
 
-const Column = ({items = []}) => (
+const Column = ({openItemDetails, items = []}) => (
     <ColumnContainer>
-        {items.map(({params, statusId}, key) => <Item key={key} params={params} statusId={statusId} isFirstItem={key === 0} />)}
+        {items.map(({params, statusId}, key) => <Item key={key} params={params} statusId={statusId} isFirstItem={key === 0} openItemDetails={openItemDetails} />)}
     </ColumnContainer>
 );
 

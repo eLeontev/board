@@ -29,7 +29,7 @@ const transformDatesToString = ({created, updated}) => {
     };
 };
 
-const ItemDetail = ({item: {params: {title, type, description, status, labels, dates, tooltip: {reporter, assignee}}}}) => (
+const ItemDetail = ({params: {title, type, description, status, labels, dates, tooltip: {reporter, assignee}}}) => (
     <ItemContainer>
         <ItemLeftPanel/>
         <ContentContainer>

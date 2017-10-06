@@ -30,6 +30,18 @@ const BoardContent = styled.div`
 `;
 
 class Board extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+
+        this.openItemDetails = this.openItemDetails.bind(this)
+    }
+
+    openItemDetails(itemDetails) {
+        this.setState({itemDetails})
+    }
+
     render() {
         const getIssuesAccordingTheStatus = (columns, items) => columns.map(({id, label}) => ({
             id,
@@ -57,10 +69,10 @@ class Board extends Component {
                         <BoardGridHeader columns={extendedColumns} />
 
                         <div>
-                            {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} />)}
+                            {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} openItemDetails={this.openItemDetails} />)}
                         </div>
                     </GridBody>
-                    <ItemDetail item={issuesPerMember[0].items[0][0]} />
+                    <ItemDetail params={this.state.itemDetails || issuesPerMember[0].items[0][0].params} />
                 </BoardContent>
             </div>
         );

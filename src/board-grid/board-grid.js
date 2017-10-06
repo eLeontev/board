@@ -23,7 +23,7 @@ const CountOfIssues = styled.span`
     }
 `;
 
-const BoardGrid = ({columns, initials}) => {
+const BoardGrid = ({columns, initials, openItemDetails}) => {
     const getCountOfIssues = (columns) => columns.reduce((count, items) => count + items.length, 0);
 
     return (
@@ -34,7 +34,7 @@ const BoardGrid = ({columns, initials}) => {
             </MemberInitials>
 
             <ColumnsContainer>
-                {columns.map((items, key) => <Column key={key} items={items} />)}
+                {columns.map((items, key) => <Column key={key} items={items} openItemDetails={openItemDetails} />)}
             </ColumnsContainer>
         </MemberIssuesContainer>
     )

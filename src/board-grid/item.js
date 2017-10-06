@@ -40,10 +40,10 @@ const ItemWrapper = styled.div`
 const colors = ['rgb(204, 0, 0)', 'rgb(217, 170, 52)', 'rgb(24, 173, 24)', '#fff'];
 const getColorOfPriority = (colors, priority) => priority ? colors[priority.slice(-1)]: colors[colors.length - 1];
 
-const Item = ({params, statusId, isFirstItem}) => {
+const Item = ({params, statusId, isFirstItem, openItemDetails}) => {
     const {priority, type, labels, title, description, status, tooltip} = params;
     return (
-        <ItemContainer color={getColorOfPriority(colors, priority)} isFirstItem={isFirstItem}>
+        <ItemContainer color={getColorOfPriority(colors, priority)} isFirstItem={isFirstItem} onClick={() => openItemDetails(params)}>
             <ItemWrapper>
                 <IconsContainer type={type} priority={priority} />
 
