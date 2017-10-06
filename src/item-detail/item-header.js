@@ -31,14 +31,14 @@ const Separator = styled.span`
     display: inline-block;
 `;
 
-const ItemHeader = ({type, title}) => (
+const ItemHeader = ({type, title, onCloseItemDetails}) => (
     <Container>
         <Header>
             {type}
             <Separator>/</Separator>
             <LinkToIssue href="#">{title}</LinkToIssue>
         </Header>
-        <HeaderActions dotSymbol="&#10625;" closeSymbol="&#10060;" />
+        <HeaderActions dotSymbol="&#10625;" closeSymbol="&#10060;" onCloseItemDetails={onCloseItemDetails} />
     </Container>
 );
 

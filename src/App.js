@@ -8,7 +8,7 @@ import {columns, teamMembers, items} from './initialData';
 
 import styled from 'styled-components';
 
-const BOARD_TITLE = 'Kanban Board';
+const initState = { isDisplayedDetails: false, BOARD_TITLE: 'Kanban Board' };
 
 const BoardTitleContainer = styled.div`
    padding: 2rem;
@@ -33,13 +33,18 @@ class Board extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {...initState};
 
-        this.openItemDetails = this.openItemDetails.bind(this)
+        this.onOpenItemDetails = this.onOpenItemDetails.bind(this);
+        this.onCloseItemDetails = this.onCloseItemDetails.bind(this);
     }
 
-    openItemDetails(itemDetails) {
-        this.setState({itemDetails})
+    onOpenItemDetails(itemDetails) {
+        this.setState({ itemDetails, isDisplayedDetails: true })
+    }
+
+    onCloseItemDetails() {
+        this.setState({...initState})
     }
 
     render() {
@@ -61,7 +66,7 @@ class Board extends Component {
         return (
             <div className="wrapper">
                 <BoardTitleContainer>
-                    <BoardTitle>{BOARD_TITLE}</BoardTitle>
+                    <BoardTitle>{this.state.BOARD_TITLE}</BoardTitle>
                 </BoardTitleContainer>
 
                 <BoardContent>
@@ -69,10 +74,10 @@ class Board extends Component {
                         <BoardGridHeader columns={extendedColumns} />
 
                         <div>
-                            {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} openItemDetails={this.openItemDetails} />)}
+                            {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} onOpenItemDetails={this.onOpenItemDetails} />)}
                         </div>
                     </GridBody>
-                    <ItemDetail params={this.state.itemDetails || issuesPerMember[0].items[0][0].params} />
+                    {this.state.isDisplayedDetails && <ItemDetail params={this.state.itemDetails} onCloseItemDetails={this.onCloseItemDetails} />}
                 </BoardContent>
             </div>
         );

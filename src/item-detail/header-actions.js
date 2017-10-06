@@ -39,10 +39,10 @@ const Close = styled.span`
 
 `;
 
-const HeaderActions = ({closeSymbol, dotSymbol}) => (
+const HeaderActions = ({closeSymbol, dotSymbol, onCloseItemDetails}) => (
     <ActionContainer>
         <Button title="Actions">{dotSymbol}{dotSymbol}{dotSymbol}</Button>
-        <Close title="Close detail"><span role="img" aria-label="Close">{closeSymbol}</span></Close>
+        <Close title="Close detail"><span role="img" aria-label="Close" onClick={onCloseItemDetails}>{closeSymbol}</span></Close>
     </ActionContainer>
 );
 

@@ -16,7 +16,6 @@ const LinkToItem = styled.a`
 const ItemContent = ({title, statusId, description, label, status}) => {
     const clickHandler = (e) => {
         e.preventDefault();
-        console.log(title);
     };
 
     return (

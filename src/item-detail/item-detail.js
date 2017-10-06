@@ -29,11 +29,11 @@ const transformDatesToString = ({created, updated}) => {
     };
 };
 
-const ItemDetail = ({params: {title, type, description, status, labels, dates, tooltip: {reporter, assignee}}}) => (
+const ItemDetail = ({params: {title, type, description, status, labels, dates, tooltip: {reporter, assignee}}, onCloseItemDetails}) => (
     <ItemContainer>
         <ItemLeftPanel/>
         <ContentContainer>
-            <ItemHeader title={title} type={type} />
+            <ItemHeader title={title} type={type} onCloseItemDetails={onCloseItemDetails} />
             <ItemDescription description={description} />
             <ItemInfo
                 status={status}
