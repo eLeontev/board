@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import ItemInfo from './item-info';
 import ItemHeader from './item-header';
@@ -6,6 +6,8 @@ import ItemLeftPanel from './item-left-panel';
 import ItemDescription from './item-description';
 
 import styled from 'styled-components';
+
+const initState = { isEditable: false };
 
 const ItemContainer = styled.div`
     border-left: 1px solid rgb(204,204,204);
@@ -29,19 +31,41 @@ const transformDatesToString = ({created, updated}) => {
     };
 };
 
-const ItemDetail = ({params: {title, type, description, status, labels, dates, tooltip: {reporter, assignee}}, onCloseItemDetails}) => (
-    <ItemContainer>
-        <ItemLeftPanel/>
-        <ContentContainer>
-            <ItemHeader title={title} type={type} onCloseItemDetails={onCloseItemDetails} />
-            <ItemDescription description={description} />
-            <ItemInfo
-                status={status}
-                labels={labels}
-                tooltip={{reporter, assignee}}
-                dates={transformDatesToString(dates)} />
-        </ContentContainer>
-    </ItemContainer>
-);
+class ItemDetail extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {...initState};
+
+        this.onChangeTypeOfContent = this.onChangeTypeOfContent.bind(this);
+    }
+
+    onChangeTypeOfContent(isEditable) {
+        this.setState({isEditable})
+    }
+
+    render() {
+        const {title, type, description, status, labels, dates, tooltip: {reporter, assignee}, onCloseItemDetails} = this.props.params;
+
+        return (
+            <ItemContainer>
+                <ItemLeftPanel/>
+                <ContentContainer>
+                    <ItemHeader title={title} type={type} onCloseItemDetails={onCloseItemDetails} />
+                    <ItemDescription
+                        description={description}
+                        isEditable={this.state.isEditable}
+                        onChangeTypeOfContent={this.onChangeTypeOfContent}
+                        onChangeDescription={this.props.onChangeDescription} />
+                    <ItemInfo
+                        status={status}
+                        labels={labels}
+                        tooltip={{reporter, assignee}}
+                        dates={transformDatesToString(dates)} />
+                </ContentContainer>
+            </ItemContainer>
+        )
+    }
+}
 
 export default ItemDetail;

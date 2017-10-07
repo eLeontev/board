@@ -28,10 +28,14 @@ const contentStyle = `
 
 const DefaultContent = styled.p`
     ${contentStyle}
+    border: 1px solid transparent;
 `;
 
 const EditableContent = styled.textarea`
     ${contentStyle}
+    width: 100%;
+    box-sizing: border-box;
+    font-family: sans-serif;
 `;
 
 const EditorMarker = styled.div`
@@ -43,9 +47,15 @@ const EditorMarker = styled.div`
     border-left: 1px solid rgb(204, 204, 204);
 `;
 
-const ItemDescription = ({description, isEditable}) => (
+const ItemDescription = ({description, isEditable, onChangeDescription, onChangeTypeOfContent}) => (
     <Container>
-        {isEditable ? <EditableContent>{description}</EditableContent> : <DefaultContent>{description}</DefaultContent>}
+        {isEditable
+            ? <EditableContent
+                value={description}
+                innerRef={(textarea) => textarea && textarea.focus()}
+                onChange={(e) => onChangeDescription(e.target.value)}
+                onBlur={() => onChangeTypeOfContent(false)} />
+            : <DefaultContent onClick={() => onChangeTypeOfContent(true)}>{description}</DefaultContent>}
         <EditorMarker  title="Edit"><EditIcon /></EditorMarker>
     </Container>
 );

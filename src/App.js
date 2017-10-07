@@ -37,6 +37,7 @@ class Board extends Component {
 
         this.onOpenItemDetails = this.onOpenItemDetails.bind(this);
         this.onCloseItemDetails = this.onCloseItemDetails.bind(this);
+        this.onChangeDescription = this.onChangeDescription.bind(this);
     }
 
     onOpenItemDetails(itemDetails) {
@@ -45,6 +46,10 @@ class Board extends Component {
 
     onCloseItemDetails() {
         this.setState({...initState})
+    }
+
+    onChangeDescription(description) {
+        this.setState({itemDetails: {...this.state.itemDetails, description}})
     }
 
     render() {
@@ -77,7 +82,12 @@ class Board extends Component {
                             {issuesPerMember.map(({initials, items}, key) => <BoardGrid key={key} columns={items} initials={initials} onOpenItemDetails={this.onOpenItemDetails} />)}
                         </div>
                     </GridBody>
-                    {this.state.isDisplayedDetails && <ItemDetail params={this.state.itemDetails} onCloseItemDetails={this.onCloseItemDetails} />}
+                    {this.state.isDisplayedDetails
+                        ? <ItemDetail
+                            params={this.state.itemDetails}
+                            onCloseItemDetails={this.onCloseItemDetails}
+                            onChangeDescription={this.onChangeDescription} />
+                        : null }
                 </BoardContent>
             </div>
         );
