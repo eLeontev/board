@@ -45,7 +45,8 @@ class ItemDetail extends Component {
     }
 
     render() {
-        const {title, type, description, status, labels, dates, tooltip: {reporter, assignee}, onCloseItemDetails} = this.props.params;
+        const { onCloseItemDetails, onChangeDescription } = this.props;
+        const { title, type, description, status, labels, dates, tooltip: { reporter, assignee } } = this.props.params;
 
         return (
             <ItemContainer>
@@ -56,7 +57,7 @@ class ItemDetail extends Component {
                         description={description}
                         isEditable={this.state.isEditable}
                         onChangeTypeOfContent={this.onChangeTypeOfContent}
-                        onChangeDescription={this.props.onChangeDescription} />
+                        onChangeDescription={onChangeDescription} />
                     <ItemInfo
                         status={status}
                         labels={labels}
