@@ -11,7 +11,7 @@ const ColumnContainer = styled.div`
 
 const Column = ({onOpenItemDetails, items = []}) => (
     <ColumnContainer>
-        {items.map(({params, statusId}, key) => <Item key={key} params={params} statusId={statusId} isFirstItem={key === 0} onOpenItemDetails={onOpenItemDetails} />)}
+        {items.map(({params, statusId, id}, key) => <Item key={key} id={id} params={params} statusId={statusId} isFirstItem={key === 0} onOpenItemDetails={onOpenItemDetails} />)}
     </ColumnContainer>
 );
 
