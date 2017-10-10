@@ -59,11 +59,11 @@ class Board extends Component {
         const {selectedItemId, boardItems} = this.state;
 
         boardItems.forEach( (item) => {
-            console.log({"item.id": item.id, selectedItemId});
-            if(item.id === selectedItemId)
+            if(item.id === selectedItemId){
                 selectedItem = item;
-            else 
+            } else { 
                 notSelectedItems = [...notSelectedItems, item];
+            }
         });
 
         //const newItem = this.state.boardItems.filter( (item) => item.id === this.state.selectedItemId)[0] || this.state.boardItems[0];
@@ -75,7 +75,7 @@ class Board extends Component {
                 ...notSelectedItems,
                 selectedItem
             ]
-        })
+        });
     }
 
     render() {
