@@ -47,14 +47,14 @@ const EditorMarker = styled.div`
     border-left: 1px solid rgb(204, 204, 204);
 `;
 
-const ItemDescription = ({description, isEditable, onChangeDescription, onChangeTypeOfContent}) => (
+const ItemDescription = ({description, isEditable, onChangeDescription, onChangeTypeOfContent, onBlurDescription}) => (
     <Container>
         {isEditable
             ? <EditableContent
                 value={description}
                 innerRef={(textarea) => textarea && textarea.focus()}
                 onChange={(e) => onChangeDescription(e.target.value)}
-                onBlur={() => onChangeTypeOfContent(false)} />
+                onBlur={(e) => onBlurDescription(e.target.value)} />
             : <DefaultContent onClick={() => onChangeTypeOfContent(true)}>{description}</DefaultContent>}
         <EditorMarker  title="Edit"><EditIcon /></EditorMarker>
     </Container>
