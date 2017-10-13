@@ -55,8 +55,8 @@ class ItemDetail extends Component {
         })
     }
 
-    onSaveDescription(){
-        this.props.onChangeDescription(this.state.description);
+    onSaveDescription(newDescription){
+        this.props.onChangeDescription(newDescription);
         this.setState({
             isEditable: false
         });
