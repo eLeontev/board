@@ -1,4 +1,7 @@
 import React from 'react';
+import withState from 'recompose/withState';
+import withProps from 'recompose/withProps';
+import compose from 'recompose/compose';
 import Column from './column';
 
 import ArrowIcon from '../svg-icons/arrow-icon'
@@ -9,13 +12,16 @@ const MemberIssuesContainer = styled.div`
 `;
 
 const ColumnsContainer = styled.div`
-    display: flex;
     align-content: stretch;
+    display: flex;
+    height: ${({isCollapsed}) => (isCollapsed ? 0 : 'auto')};
+    overflow: hidden;
 `;
 
 const MemberInitials = styled.h3`
-    padding: 1rem;
+    cursor: pointer;
     font-size: 1.4rem;
+    padding: 1rem;
 `;
 
 const CountOfIssues = styled.span`
@@ -28,33 +34,38 @@ const CountOfIssues = styled.span`
 
 const ArrowIconContainer = styled.span`
     top: -1.5px;
-    cursor: pointer;
     padding-right: 5px;
     position: relative;
-    
+
     svg {
-        transform: rotate(${({isCollapsed}) => isCollapsed && '90deg'})
+        transform: rotate(${({isCollapsed}) => isCollapsed && '90deg'});
+        transition: transform .2s;
     }
 `;
 
-const BoardGrid = ({columns, initials, onOpenItemDetails}) => {
+const withCollapseToggle = compose(
+    withState('isCollapsed', 'setCollapsed', false),
+    withProps(({isCollapsed, setCollapsed}) => ({ toggle: () => setCollapsed(!isCollapsed)}))
+);
+
+const BoardGrid = ({columns, initials, isCollapsed, onOpenItemDetails, toggle}) => {
     const getCountOfIssues = (columns) => columns.reduce((count, items) => count + items.length, 0);
 
     return (
         <MemberIssuesContainer>
-            <MemberInitials>
-                <ArrowIconContainer isCollapsed={true}>
+            <MemberInitials onClick={toggle}>
+                <ArrowIconContainer isCollapsed={isCollapsed}>
                     <ArrowIcon />
                 </ArrowIconContainer>
                 {initials}
                 <CountOfIssues>{getCountOfIssues(columns)} issues</CountOfIssues>
             </MemberInitials>
 
-            <ColumnsContainer>
+            <ColumnsContainer isCollapsed={isCollapsed}>
                 {columns.map((items, key) => <Column key={key} items={items} onOpenItemDetails={onOpenItemDetails} />)}
             </ColumnsContainer>
         </MemberIssuesContainer>
     )
 };
 
-export default BoardGrid;
+export default withCollapseToggle(BoardGrid);
