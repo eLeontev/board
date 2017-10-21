@@ -54,27 +54,15 @@ class Board extends Component {
 
     onChangeDescription(newDescription) {
 
-        let selectedItem;
-        let notSelectedItems = [];
         const {selectedItemId, boardItems} = this.state;
 
-        boardItems.forEach( (item) => {
-            if(item.id === selectedItemId){
-                selectedItem = item;
-            } else { 
-                notSelectedItems = [...notSelectedItems, item];
-            }
-        });
-
-        //const newItem = this.state.boardItems.filter( (item) => item.id === this.state.selectedItemId)[0] || this.state.boardItems[0];
-        selectedItem.params.description = newDescription;
+        const selectedItemIndex = boardItems.findIndex( x => x.id === selectedItemId);
+        const newBoardItems = [...boardItems];
+        newBoardItems[selectedItemIndex].params.description = newDescription;
 
         this.setState({
-            itemDetails: selectedItem.params,
-            boardItems: [
-                ...notSelectedItems,
-                selectedItem
-            ]
+            itemDetails: newBoardItems[selectedItemIndex].params,
+            boardItems: newBoardItems
         });
     }
 
