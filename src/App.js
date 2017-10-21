@@ -8,7 +8,7 @@ import {columns, teamMembers, items} from './initialData';
 
 import styled from 'styled-components';
 
-const initState = { isDisplayedDetails: false, BOARD_TITLE: 'Kanban Board' };
+const initState = { isDisplayedDetails: false, BOARD_TITLE: "Kanban Board", boardItems: items };
 
 const BoardTitleContainer = styled.div`
    padding: 2rem;
@@ -40,16 +40,30 @@ class Board extends Component {
         this.onChangeDescription = this.onChangeDescription.bind(this);
     }
 
-    onOpenItemDetails(itemDetails) {
-        this.setState({ itemDetails, isDisplayedDetails: true })
+    onOpenItemDetails(itemDetails, selectedItemId) {
+        this.setState({ 
+            itemDetails, 
+            isDisplayedDetails: true, 
+            selectedItemId
+        });
     }
 
     onCloseItemDetails() {
         this.setState({...initState})
     }
 
-    onChangeDescription(description) {
-        this.setState({itemDetails: {...this.state.itemDetails, description}})
+    onChangeDescription(newDescription) {
+
+        const {selectedItemId, boardItems} = this.state;
+
+        const selectedItemIndex = boardItems.findIndex( (x) => x.id === selectedItemId);
+        const newBoardItems = [...boardItems];
+        newBoardItems[selectedItemIndex].params.description = newDescription;
+
+        this.setState({
+            itemDetails: newBoardItems[selectedItemIndex].params,
+            boardItems: newBoardItems
+        });
     }
 
     render() {
@@ -59,7 +73,7 @@ class Board extends Component {
             items: items.filter(({statusId}) => statusId === id),
         }));
 
-        const extendedColumns = getIssuesAccordingTheStatus(columns, items);
+        const extendedColumns = getIssuesAccordingTheStatus(columns, this.state.boardItems);
         const issuesPerMember = teamMembers.map(({id, initials}) => ({
                 initials,
                 items: extendedColumns.map(({labels, items}) => items
