@@ -45,6 +45,12 @@ class ItemDetail extends Component {
         this.onSaveDescription = this.onSaveDescription.bind(this);
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            description: nextProps.params.description
+        })
+    }
+
     onChangeTypeOfContent(isEditable) {
         this.setState({isEditable})
     }
