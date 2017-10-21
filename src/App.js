@@ -56,7 +56,7 @@ class Board extends Component {
 
         const {selectedItemId, boardItems} = this.state;
 
-        const selectedItemIndex = boardItems.findIndex( x => x.id === selectedItemId);
+        const selectedItemIndex = boardItems.findIndex( (x) => x.id === selectedItemId);
         const newBoardItems = [...boardItems];
         newBoardItems[selectedItemIndex].params.description = newDescription;
 
